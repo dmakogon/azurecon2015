@@ -7,6 +7,7 @@ var DocumentDBClient = require('documentdb').DocumentClient
   , databaseId = config.names.database
   , collectionId = config.names.collection
   , dbLink
+  , collLink
 
 if (process.argv.length <= 2) {
     console.log("Usage: excludepath <indexpath>");
@@ -20,8 +21,8 @@ var masterKey = config.connection.authKey;
 var client = new DocumentDBClient(host, { masterKey: masterKey });
 
 
-dbLink = 'dbs/' + databaseId;
-collLink = dbLink + '/colls/' + collectionId;
+ dbLink = 'dbs/' + databaseId;
+ collLink = dbLink + '/colls/' + collectionId;
 
 console.log(collLink);
         
@@ -88,7 +89,6 @@ function waitForIndexTransformToComplete(collLink, callback) {
     //do a readCollection and check the 3rd parameter of the callback
     //The headers collection includes a header that indicates progress between 0 and 100
     var progress = 0;
-    var count = 0;
 
     async.whilst(
         function () { return progress > 0 && progress < 100; },
