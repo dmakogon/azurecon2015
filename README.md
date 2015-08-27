@@ -1,4 +1,4 @@
-# nosqlnow2015 Demo content for AzureConf 2015
+#  Demo content for AzureConf 2015
 ===
 This contains all materials from our talk at AzureConf 2015, including the [demo walkthrough](demowalkthrough.md).
 
