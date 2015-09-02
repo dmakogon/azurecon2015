@@ -6,6 +6,7 @@ Movie data walkthrough
 We'll search for a specific movie title. By default, string properties are indexed via hash.
 
 Here's a query by movie title
+
 	SELECT * from Movies m
 	WHERE m.title = "Ant-Man"
 
