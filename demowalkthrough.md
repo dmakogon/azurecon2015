@@ -95,26 +95,24 @@ Afterward, run `resetindex.js` to go back to defaults.
 
 This adds the `Spatial` index type for data of type `Point`.
 
-Now we can search for theaters roughly within the San Jose area (based on a simple polyglon drawn at the [Simple GeoJSON Editor](https://google-developers.appspot.com/maps/documentation/utils/geojson/).
+Now we can search for theaters roughly within the Redmond area (based on a simple polyglon drawn at the [Simple GeoJSON Editor](https://google-developers.appspot.com/maps/documentation/utils/geojson/).
 
 	SELECT c.name, c.location FROM cinemas c
 	 WHERE ST_WITHIN(c.location, 
 	{ 
 	    "type": "Polygon",  
 	    "coordinates": [[ 
-	    [-121.88452363014221,37.413800350662875],
-	    [-121.97035431861877,37.39089085641704],
-	    [-121.95936799049377,37.29317426435305],
-	    [-121.80624604225159,37.27186719156333],
-	    [-121.78633332252502,37.34286730373346],
-	    [-121.88452363014221,37.413800350662875]
+		[-122.160,47.683], [-122.159,47.634], [-122.098,47.633],
+		[-122.064,47.656], [-122.064,47.690], [-122.127,47.698],
+		[-122.160,47.683]
+
 	]]})
 
-We can also search for theaters within some distance of a Point. In this case, we can query theaters within 3 miles of the San Jose Convention Center:
+We can also search for theaters within some distance of a Point. In this case, we can query theaters within 2 miles of the recording studio:
 
 	SELECT * FROM cinemas c WHERE ST_DISTANCE(c.location, { 
 	  "type": "Point", 
-	  "coordinates": [-121.889125, 37.33034] 
-	}) < 3 * 1600
+	  "coordinates": [-122.131, 47.643] 
+	}) < 2 * 1600
 	
 Afterward, run `resetindex.js` to go back to defaults.
